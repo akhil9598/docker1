@@ -1,0 +1,40 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1716548352642",
+    "Statement": [
+        {
+            "Sid": "Stmt1716548350198",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3*",
+            "Resource": [
+                "arn:aws:s3:::my-bucket-9598/*",
+                "arn:aws:s3:::my-bucket-9598"
+            ],
+            "Condition": {
+                "StringNotEquals": {
+                    "aws:PrincipalArn": "\"arn:aws:iam::339712794135:root\""
+                }
+            }
+        }
+    ]
+}
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "resticttouser",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::my-bucket-9598",
+            "Condition": {
+                "StringNotEquals": {
+                    "aws:PrincipalArn": "339712794135"
+                }
+            }
+        }
+    ]
+}
